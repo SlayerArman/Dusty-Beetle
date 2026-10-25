@@ -35,4 +35,4 @@ func _on_timer_timeout():
 func _on_body_entered(body):
 	if body.name == "Player":
 		get_tree().current_scene.game_over()
-		body.queue_free()
+		body.die()

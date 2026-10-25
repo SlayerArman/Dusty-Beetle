@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://bv0q62xf8tefv"]
 
 [ext_resource type="Script" uid="uid://dda2dsj5vikwu" path="res://player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://bqowsghgca36c" path="res://dead beetle.png" id="2_kne1u"]
 [ext_resource type="Texture2D" uid="uid://bub7vtu7rgxbu" path="res://beetle.png" id="2_kpjcp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6ohk"]
+atlas = ExtResource("2_kne1u")
+region = Rect2(0, 0, 178, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpjcp"]
 atlas = ExtResource("2_kpjcp")
@@ -45,6 +50,14 @@ region = Rect2(480, 164, 120, 164)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6ohk")
+}],
+"loop": 1,
+"name": &"Death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 0.8,
 "texture": SubResource("AtlasTexture_kpjcp")
@@ -98,9 +111,8 @@ script = ExtResource("1_kpjcp")
 position = Vector2(500.00003, 299)
 scale = Vector2(0.24001716, 0.24001716)
 sprite_frames = SubResource("SpriteFrames_1vivr")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
-frame_progress = 0.28830624
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=716049508]
 position = Vector2(500, 300)

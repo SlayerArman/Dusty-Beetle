@@ -4,7 +4,9 @@ var stomp_scene = preload("res://stomp.tscn")
 
 @onready var spawn_timer = $SpawnTimer
 @onready var time_label = $CanvasLayer/Label 
-@onready var game_over_label = $CanvasLayer/GameOverLabel
+@onready var game_over_label = $CanvasLayer/Squished
+@onready var game_over_black = $CanvasLayer/Black
+@onready var death_sound = $DeathSound
 
 var time_survived: float = 0.0
 var is_dead: bool = false
@@ -25,6 +27,8 @@ func game_over():
 	is_dead = true
 	spawn_timer.stop()
 	game_over_label.show()
+	game_over_black.show()
+	$DeathSound.play()
 
 func _on_spawn_timer_timeout():
 	if is_dead: return
