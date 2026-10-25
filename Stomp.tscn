@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://6bmroy0s146g"]
+
+[ext_resource type="Texture2D" uid="uid://deeqej31w8jnt" path="res://icon.svg" id="1_8lhp0"]
+[ext_resource type="Script" uid="uid://f6flefwmhvrj" path="res://stomp.gd" id="1_fxygs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(126, 126)
+
+[node name="Stomp" type="Area2D" unique_id=512768247]
+script = ExtResource("1_fxygs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1271673914]
+texture = ExtResource("1_8lhp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111318829]
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Timer" type="Timer" parent="." unique_id=1703980741]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
