@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://6bmroy0s146g"]
+
+[ext_resource type="Script" uid="uid://f6flefwmhvrj" path="res://stomp.gd" id="1_fxygs"]
+[ext_resource type="Texture2D" uid="uid://dd4ai2l5yxvui" path="res://shoe.png" id="2_fxygs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(126, 126)
+
+[node name="Stomp" type="Area2D" unique_id=512768247]
+script = ExtResource("1_fxygs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1271673914]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_fxygs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111318829]
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Timer" type="Timer" parent="." unique_id=1703980741]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

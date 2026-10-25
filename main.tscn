@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bduc6ur7550te" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bv0q62xf8tefv" path="res://Player.tscn" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cjl8uqmavauxu" path="res://Ground.png" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://mmri6r8j2f31" path="res://Dust Beetle.ogg" id="4_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=197370376]
 script = ExtResource("1_0xm2m")
@@ -42,5 +44,15 @@ grow_vertical = 2
 text = "SQUISHED!
 Press SPACE to Restart"
 horizontal_alignment = 1
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=1704245184]
+z_index = -5
+position = Vector2(639, 363)
+scale = Vector2(0.48000035, 0.48000035)
+texture = ExtResource("3_h2yge")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1810227385]
+stream = ExtResource("4_1bvp3")
+autoplay = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

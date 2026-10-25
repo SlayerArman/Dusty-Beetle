@@ -38,4 +38,4 @@ func _on_spawn_timer_timeout():
 	add_child(stomp)
 	
 	if spawn_timer.wait_time > 0.2:
-		spawn_timer.wait_time -= 0.02
+		spawn_timer.wait_time -= 0.005
