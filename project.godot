@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Dust Bunny"
-run/main_scene="uid://cnal7jg5576lv"
+config/name="Dusty Beetle"
+run/main_scene="uid://c1iwef3hgkphn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
