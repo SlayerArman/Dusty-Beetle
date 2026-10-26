@@ -14,6 +14,10 @@ config/name="Dusty Beetle"
 run/main_scene="uid://c1iwef3hgkphn"
 config/features=PackedStringArray("4.7", "Mobile")
 
+[autoload]
+
+Global="*uid://dm1ka8flq0i5c"
+
 [display]
 
 window/size/viewport_width=1280

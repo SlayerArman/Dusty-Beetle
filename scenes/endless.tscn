@@ -13,6 +13,10 @@
 font = ExtResource("4_u1554")
 font_size = 35
 
+[sub_resource type="LabelSettings" id="LabelSettings_u1554"]
+font = ExtResource("4_u1554")
+font_size = 50
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(19.934734, 24.52843)
 
@@ -59,8 +63,18 @@ horizontal_alignment = 1
 [node name="Squished" type="Sprite2D" parent="CanvasLayer" unique_id=1835684718]
 visible = false
 z_index = 2
-position = Vector2(637, 373)
+position = Vector2(630, 310)
 texture = ExtResource("4_cmdno")
+
+[node name="PressSPACE" type="Label" parent="CanvasLayer" unique_id=1635624979]
+visible = false
+z_index = 2
+offset_left = 409.0
+offset_top = 573.0
+offset_right = 848.0
+offset_bottom = 629.0
+text = "Press SPACE to Restart"
+label_settings = SubResource("LabelSettings_u1554")
 
 [node name="Ground" type="Sprite2D" parent="." unique_id=1704245184]
 z_index = -5
