@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cjl8uqmavauxu" path="res://assets/Ground.png" id="1_8ln24"]
 [ext_resource type="Texture2D" uid="uid://6oh0tax7otjh" path="res://assets/Dusty Beetle.png" id="2_rtw2f"]
-[ext_resource type="FontFile" uid="uid://d05ve1tl76c0o" path="res://assets/AncientModernTales-a7Po.ttf" id="3_oa1go"]
+[ext_resource type="FontFile" uid="uid://d05ve1tl76c0o" path="res://assets/AncientModernTales-a7Po.ttf" id="3_8ln24"]
 [ext_resource type="Script" uid="uid://ddprpsjvqpmxo" path="res://scripts/play.gd" id="4_8ln24"]
 [ext_resource type="AudioStream" uid="uid://dp7llroh3rtv2" path="res://sfx/squash.ogg" id="5_8ln24"]
 
@@ -40,7 +40,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.6666667, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_oa1go")
+theme_override_fonts/font = ExtResource("3_8ln24")
 theme_override_font_sizes/font_size = 100
 text = "PLAY"
 flat = true
