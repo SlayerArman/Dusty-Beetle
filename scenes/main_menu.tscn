@@ -3,8 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://cjl8uqmavauxu" path="res://assets/Ground.png" id="1_8ln24"]
 [ext_resource type="Texture2D" uid="uid://6oh0tax7otjh" path="res://assets/Dusty Beetle.png" id="2_rtw2f"]
 [ext_resource type="FontFile" uid="uid://d05ve1tl76c0o" path="res://assets/AncientModernTales-a7Po.ttf" id="3_8ln24"]
-[ext_resource type="Script" uid="uid://ddprpsjvqpmxo" path="res://scripts/play.gd" id="4_8ln24"]
+[ext_resource type="Script" uid="uid://ddprpsjvqpmxo" path="res://scripts/play_btn.gd" id="4_tbmy8"]
 [ext_resource type="AudioStream" uid="uid://dp7llroh3rtv2" path="res://sfx/squash.ogg" id="5_8ln24"]
+[ext_resource type="AudioStream" uid="uid://mmri6r8j2f31" path="res://sfx/Dust Beetle.ogg" id="6_rtw2f"]
+[ext_resource type="Script" uid="uid://d3emkje7ppx5b" path="res://scripts/endless_btn.gd" id="6_tbmy8"]
+[ext_resource type="Script" uid="uid://xkollat1fu5w" path="res://scripts/quit_btn.gd" id="7_tbmy8"]
 
 [node name="Main Menu" type="Node2D" unique_id=95104424]
 
@@ -31,10 +34,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1034.0
-offset_top = 585.0
-offset_right = 1254.0
-offset_bottom = 703.0
+offset_left = 1025.0
+offset_top = 378.0
+offset_right = 1245.0
+offset_bottom = 496.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -44,9 +47,67 @@ theme_override_fonts/font = ExtResource("3_8ln24")
 theme_override_font_sizes/font_size = 100
 text = "PLAY"
 flat = true
-script = ExtResource("4_8ln24")
+script = ExtResource("4_tbmy8")
 
 [node name="clicked" type="AudioStreamPlayer2D" parent="Play" unique_id=192084257]
-position = Vector2(-1034, -585)
+position = Vector2(-1040, -585)
+stream = ExtResource("5_8ln24")
+volume_db = 5.0
+
+[node name="Endless" type="Button" parent="." unique_id=1265288044]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 936.0
+offset_top = 492.0
+offset_right = 1314.0
+offset_bottom = 610.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6666667, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 100
+text = "Endless"
+flat = true
+script = ExtResource("6_tbmy8")
+
+[node name="clicked" type="AudioStreamPlayer2D" parent="Endless" unique_id=2052050455]
+position = Vector2(-1040, -585)
 stream = ExtResource("5_8ln24")
 volume_db = 17.403
+
+[node name="Quit" type="Button" parent="." unique_id=946769595]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 932.0
+offset_top = 600.0
+offset_right = 1310.0
+offset_bottom = 718.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6666667, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 100
+text = "Quit"
+flat = true
+script = ExtResource("7_tbmy8")
+
+[node name="clicked" type="AudioStreamPlayer2D" parent="Quit" unique_id=757705877]
+position = Vector2(-1040, -585)
+stream = ExtResource("5_8ln24")
+volume_db = 17.403
+
+[node name="BG Music" type="AudioStreamPlayer2D" parent="." unique_id=454807762]
+position = Vector2(-5, 4)
+stream = ExtResource("6_rtw2f")
+volume_db = -10.0
+autoplay = true

@@ -1,6 +1,6 @@
 extends Node2D
 
-var stomp_scene = preload("res://Stomp.tscn")
+var stomp_scene = preload("res://scenes/Stomp.tscn")
 
 @onready var spawn_timer = $SpawnTimer
 @onready var time_label = $CanvasLayer/Label 
