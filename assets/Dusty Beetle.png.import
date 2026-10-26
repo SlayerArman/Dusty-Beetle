@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqowsghgca36c"
-path="res://.godot/imported/dead beetle.png-9c088c8f9e31fb5f0268d123e2606e41.ctex"
+uid="uid://6oh0tax7otjh"
+path="res://.godot/imported/Dusty Beetle.png-a568f994533b1b7eb0ae199f5cadd701.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dead beetle.png"
-dest_files=["res://.godot/imported/dead beetle.png-9c088c8f9e31fb5f0268d123e2606e41.ctex"]
+source_file="res://assets/Dusty Beetle.png"
+dest_files=["res://.godot/imported/Dusty Beetle.png-a568f994533b1b7eb0ae199f5cadd701.ctex"]
 
 [params]
 

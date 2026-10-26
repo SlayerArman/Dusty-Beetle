@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bub7vtu7rgxbu"
-path="res://.godot/imported/beetle.png-1bb39a684541c9b501ff8ff595fdb2d1.ctex"
+uid="uid://dd4ai2l5yxvui"
+path="res://.godot/imported/shoe.png-416483d4363e8e9b2c8ff787b022655b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://beetle.png"
-dest_files=["res://.godot/imported/beetle.png-1bb39a684541c9b501ff8ff595fdb2d1.ctex"]
+source_file="res://assets/shoe.png"
+dest_files=["res://.godot/imported/shoe.png-416483d4363e8e9b2c8ff787b022655b.ctex"]
 
 [params]
 

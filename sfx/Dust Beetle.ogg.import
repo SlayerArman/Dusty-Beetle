@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mmri6r8j2f31"
+path="res://.godot/imported/Dust Beetle.ogg-2ce11d149d390cc191fa02c1ed460b4f.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/Dust Beetle.ogg"
+dest_files=["res://.godot/imported/Dust Beetle.ogg-2ce11d149d390cc191fa02c1ed460b4f.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

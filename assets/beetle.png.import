@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xffthm8yicrh"
-path="res://.godot/imported/wooden board.png-7887c447d0c454199caff6b1672ce9a6.ctex"
+uid="uid://bub7vtu7rgxbu"
+path="res://.godot/imported/beetle.png-61d5be0514b67c467c83b7574970df6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wooden board.png"
-dest_files=["res://.godot/imported/wooden board.png-7887c447d0c454199caff6b1672ce9a6.ctex"]
+source_file="res://assets/beetle.png"
+dest_files=["res://.godot/imported/beetle.png-61d5be0514b67c467c83b7574970df6b.ctex"]
 
 [params]
 

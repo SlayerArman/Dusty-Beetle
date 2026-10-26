@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://6bmroy0s146g"]
 
-[ext_resource type="Script" uid="uid://f6flefwmhvrj" path="res://stomp.gd" id="1_fxygs"]
-[ext_resource type="Texture2D" uid="uid://dd4ai2l5yxvui" path="res://shoe.png" id="2_fxygs"]
+[ext_resource type="Script" uid="uid://f6flefwmhvrj" path="res://scripts/stomp.gd" id="1_apo6r"]
+[ext_resource type="Texture2D" uid="uid://dd4ai2l5yxvui" path="res://assets/shoe.png" id="2_jnnng"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fxygs"]
 radius = 33.0
 height = 84.0
 
 [node name="Stomp" type="Area2D" unique_id=512768247]
-script = ExtResource("1_fxygs")
+script = ExtResource("1_apo6r")
 
 [node name="ShoeSprite" type="Sprite2D" parent="." unique_id=1271673914]
-texture = ExtResource("2_fxygs")
+texture = ExtResource("2_jnnng")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111318829]
 scale = Vector2(5, 5)
