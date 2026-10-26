@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjl8uqmavauxu" path="res://assets/Ground.png" id="5_2os1m"]
 [ext_resource type="AudioStream" uid="uid://mmri6r8j2f31" path="res://sfx/Dust Beetle.ogg" id="6_go7sj"]
 [ext_resource type="Texture2D" uid="uid://xffthm8yicrh" path="res://assets/wooden board.png" id="7_7gny6"]
+[ext_resource type="Texture2D" uid="uid://bcd5ueumksnx8" path="res://assets/level cleared.png" id="8_s8va5"]
 
 [sub_resource type="GDScript" id="GDScript_oc4kc"]
 script/source = "extends Node2D
@@ -230,12 +231,27 @@ texture = ExtResource("7_7gny6")
 visible = false
 
 [node name="LevelCleared" type="Sprite2D" parent="WinUI" unique_id=623438615]
+z_index = 5
+position = Vector2(648, 297)
+scale = Vector2(1.76, 1.76)
+texture = ExtResource("8_s8va5")
+
+[node name="Black" type="ColorRect" parent="WinUI" unique_id=1807281952]
+z_index = 1
+offset_left = -19.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = 29.0
+scale = Vector2(33.258804, 19.056309)
+color = Color(0, 0, 0, 0.39215687)
 
 [node name="NextLevel" type="Button" parent="WinUI" unique_id=1610071077]
-offset_left = 485.0
-offset_top = 429.0
-offset_right = 575.0
-offset_bottom = 460.0
+z_index = 5
+offset_left = 544.0
+offset_top = 484.0
+offset_right = 634.0
+offset_bottom = 515.0
+scale = Vector2(1.96, 1.96)
 text = "Next Level"
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=1391216344]

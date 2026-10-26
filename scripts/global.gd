@@ -9,11 +9,9 @@ func _ready() -> void:
 	load_game()
 
 func complete_level(level_number: int) -> void:
-	# Mark level as completed
 	if not level_number in completed_levels:
 		completed_levels.append(level_number)
 	
-	# Unlock the next level
 	if level_number >= highest_unlocked_level:
 		highest_unlocked_level = level_number + 1
 	
@@ -32,7 +30,6 @@ func load_game() -> void:
 	var config = ConfigFile.new()
 	var err = config.load(SAVE_PATH)
 	
-	# If no save file exists yet, keep defaults
 	if err != OK:
 		return
 		
