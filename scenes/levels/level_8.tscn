@@ -1,0 +1,321 @@
+[gd_scene format=3 uid="uid://buf2smmv2tuga"]
+
+[ext_resource type="AudioStream" uid="uid://dp7llroh3rtv2" path="res://sfx/squash.ogg" id="2_0kxia"]
+[ext_resource type="PackedScene" uid="uid://bv0q62xf8tefv" path="res://scenes/Player.tscn" id="3_5umh1"]
+[ext_resource type="FontFile" uid="uid://d05ve1tl76c0o" path="res://assets/AncientModernTales-a7Po.ttf" id="4_v7ucw"]
+[ext_resource type="Texture2D" uid="uid://dkc6rk32437s6" path="res://assets/squished.png" id="5_vsqe1"]
+[ext_resource type="Texture2D" uid="uid://cjl8uqmavauxu" path="res://assets/Ground.png" id="6_kk2ik"]
+[ext_resource type="AudioStream" uid="uid://mmri6r8j2f31" path="res://sfx/Dust Beetle.ogg" id="7_6to6e"]
+[ext_resource type="Texture2D" uid="uid://xffthm8yicrh" path="res://assets/wooden board.png" id="8_40qa3"]
+[ext_resource type="Texture2D" uid="uid://bcd5ueumksnx8" path="res://assets/level cleared.png" id="9_e7lui"]
+[ext_resource type="AudioStream" uid="uid://dnrmt0lmdaquc" path="res://sfx/victory.ogg" id="10_0kxia"]
+[ext_resource type="AudioStream" uid="uid://chyosi1wff3je" path="res://sfx/button hover.ogg" id="10_acgl5"]
+[ext_resource type="Texture2D" uid="uid://ccibnn5vox8jv" path="res://assets/pause.png" id="11_5umh1"]
+
+[sub_resource type="GDScript" id="GDScript_oc4kc"]
+script/source = "extends Node2D
+
+var stomp_scene = preload(\"res://scenes/Stomp.tscn\")
+
+@onready var hover_sound = $HoverSound
+@onready var level_timer = $LevelTimer
+@onready var win_ui = $WinUI
+@onready var continue_btn = $WinUI/NextLevel
+@onready var spawn_timer = $SpawnTimer
+@onready var time_label = $CanvasLayer/Label
+@onready var game_over_label = $CanvasLayer/Squished
+@onready var game_over_black = $CanvasLayer/Black
+@onready var death_sound = $DeathSound
+@onready var press_space = $CanvasLayer/PressSPACE
+
+var is_dead: bool = false
+var is_won: bool = false
+
+func _ready() -> void:
+	win_ui.process_mode = Node.PROCESS_MODE_ALWAYS
+	hover_sound.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	continue_btn.mouse_entered.connect(_on_button_hovered)
+	continue_btn.pressed.connect(_on_continue_pressed)
+	
+	spawn_timer.wait_time = 0.8
+	
+	if not spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
+		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	
+	if not level_timer.timeout.is_connected(_on_level_complete):
+		level_timer.timeout.connect(_on_level_complete)
+
+	spawn_timer.start()
+	level_timer.start()
+
+func _process(delta: float) -> void:
+	if is_dead:
+		if Input.is_action_just_pressed(\"ui_accept\"):
+			get_tree().reload_current_scene()
+		return
+
+	if is_won:
+		return
+
+	var time_left = max(0.0, level_timer.time_left)
+	time_label.text = \"Time Left: \" + str(snapped(time_left, 0.1)) + \"s\"
+
+func _on_level_complete() -> void:
+	if is_dead: return
+	
+	is_won = true
+	spawn_timer.stop()
+	level_timer.stop()
+	time_label.text = \"Time Left: 0.0s\"
+	win_ui.show()
+	
+	Global.complete_level(8)
+	
+	get_tree().paused = true
+
+func _on_continue_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://scenes/level_select.tscn\")
+
+func _on_button_hovered() -> void:
+	if hover_sound and hover_sound.stream:
+		hover_sound.stop()
+		hover_sound.play()
+
+func game_over() -> void:
+	if is_won: return
+	
+	is_dead = true
+	spawn_timer.stop()
+	level_timer.stop()
+	game_over_label.show()
+	game_over_black.show()
+	death_sound.play()
+	press_space.show()
+
+func _on_spawn_timer_timeout() -> void:
+	if is_dead or is_won: return
+	
+	var stomp = stomp_scene.instantiate()
+	var screen_size = get_viewport_rect().size
+	stomp.position = Vector2(
+		randf_range(50, screen_size.x - 50),
+		randf_range(50, screen_size.y - 50)
+	)
+	add_child(stomp)
+	
+	if spawn_timer.wait_time > 0.2:
+		spawn_timer.wait_time -= 0.005
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_oc4kc"]
+font = ExtResource("4_v7ucw")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font = ExtResource("4_v7ucw")
+font_size = 35
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(19.934734, 24.52843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8va5"]
+bg_color = Color(0.84313726, 0.8, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxy0u"]
+bg_color = Color(0.84313726, 0.654902, 0, 1)
+
+[node name="Main" type="Node2D" unique_id=197370376]
+script = SubResource("GDScript_oc4kc")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1638748974]
+stream = ExtResource("2_0kxia")
+volume_db = 5.0
+
+[node name="Player" parent="." unique_id=356166219 instance=ExtResource("3_5umh1")]
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=577313350]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1787229132]
+
+[node name="PressSPACE" type="Label" parent="CanvasLayer" unique_id=1941057831]
+visible = false
+z_index = 2
+offset_left = 409.0
+offset_top = 573.0
+offset_right = 848.0
+offset_bottom = 629.0
+text = "Press SPACE to Restart"
+label_settings = SubResource("LabelSettings_oc4kc")
+
+[node name="Black" type="ColorRect" parent="CanvasLayer" unique_id=506144291]
+visible = false
+z_index = 1
+offset_left = -19.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = 29.0
+scale = Vector2(33.258804, 19.056309)
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=709433054]
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -519.0
+offset_top = 21.0
+offset_right = -479.0
+offset_bottom = 60.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "0.0"
+label_settings = SubResource("LabelSettings_7mycd")
+horizontal_alignment = 1
+
+[node name="Level 8" type="Label" parent="CanvasLayer" unique_id=1024475831]
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 481.0
+offset_top = 20.0
+offset_right = 556.0
+offset_bottom = 59.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Level 8"
+label_settings = SubResource("LabelSettings_7mycd")
+horizontal_alignment = 1
+
+[node name="Squished" type="Sprite2D" parent="CanvasLayer" unique_id=1835684718]
+visible = false
+z_index = 2
+position = Vector2(620, 310)
+texture = ExtResource("5_vsqe1")
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=1704245184]
+z_index = -5
+position = Vector2(639, 363)
+scale = Vector2(0.48000035, 0.48000035)
+texture = ExtResource("6_kk2ik")
+
+[node name="BG Music" type="AudioStreamPlayer2D" parent="." unique_id=1810227385]
+stream = ExtResource("7_6to6e")
+volume_db = -10.0
+autoplay = true
+
+[node name="Boundries" type="StaticBody2D" parent="." unique_id=1442532548]
+
+[node name="Left Wall" type="CollisionShape2D" parent="Boundries" unique_id=99995628]
+position = Vector2(-25.94416, 371.50003)
+rotation = -3.1415925
+scale = Vector2(2.0711675, -42.87522)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Right Wall" type="CollisionShape2D" parent="Boundries" unique_id=774032363]
+position = Vector2(1313, 391)
+scale = Vector2(2.6000013, 41.68)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Upper Wall" type="CollisionShape2D" parent="Boundries" unique_id=1525466783]
+position = Vector2(616, -18)
+scale = Vector2(66.840004, 1)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Lower Wall" type="CollisionShape2D" parent="Boundries" unique_id=1206766943]
+position = Vector2(725, 757)
+scale = Vector2(87.05935, -2.3044865)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Board" type="Sprite2D" parent="." unique_id=221242877]
+z_index = 5
+position = Vector2(135, 36)
+scale = Vector2(0.3247556, 0.32317102)
+texture = ExtResource("8_40qa3")
+
+[node name="Board2" type="Sprite2D" parent="." unique_id=1845714791]
+z_index = 5
+position = Vector2(1147.0001, 36.000004)
+scale = Vector2(0.3247556, 0.32317102)
+texture = ExtResource("8_40qa3")
+
+[node name="WinUI" type="CanvasLayer" parent="." unique_id=2006364236]
+visible = false
+
+[node name="LevelCleared" type="Sprite2D" parent="WinUI" unique_id=623438615]
+z_index = 5
+position = Vector2(648, 297)
+scale = Vector2(1.76, 1.76)
+texture = ExtResource("9_e7lui")
+
+[node name="Black" type="ColorRect" parent="WinUI" unique_id=1807281952]
+z_index = 1
+offset_left = -19.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = 29.0
+scale = Vector2(33.258804, 19.056309)
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="NextLevel" type="Button" parent="WinUI" unique_id=1610071077]
+z_index = 5
+offset_left = 544.0
+offset_top = 484.0
+offset_right = 634.0
+offset_bottom = 515.0
+scale = Vector2(1.96, 1.96)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.9297974, 0.93766993, 1)
+theme_override_fonts/font = ExtResource("4_v7ucw")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_s8va5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qxy0u")
+text = "Next Level"
+
+[node name="LevelTimer" type="Timer" parent="." unique_id=1391216344]
+wait_time = 40.0
+one_shot = true
+autostart = true
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="." unique_id=1010241535]
+position = Vector2(-1025, -378)
+stream = ExtResource("10_acgl5")
+volume_db = 24.0
+
+[node name="VictorySound" type="AudioStreamPlayer2D" parent="." unique_id=2091034149]
+stream = ExtResource("10_0kxia")
+
+[node name="PauseUI" type="CanvasLayer" parent="." unique_id=500929450]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseUI" unique_id=1940446876]
+z_index = 2
+position = Vector2(638, 269)
+scale = Vector2(1.5525, 1.5179105)
+texture = ExtResource("11_5umh1")
+
+[node name="Label" type="Label" parent="PauseUI" unique_id=224808207]
+z_index = 2
+offset_left = 482.0
+offset_top = 507.0
+offset_right = 813.0
+offset_bottom = 563.0
+theme_override_fonts/font = ExtResource("4_v7ucw")
+theme_override_font_sizes/font_size = 50
+text = "Press P to Resume"
+
+[node name="Black" type="ColorRect" parent="PauseUI" unique_id=998421530]
+z_index = 1
+offset_left = -19.0
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = 29.0
+scale = Vector2(33.258804, 19.056309)
+color = Color(0, 0, 0, 0.39215687)
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
