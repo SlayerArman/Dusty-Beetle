@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://chyosi1wff3je"
+path="res://.godot/imported/button hover.ogg-5596628d72a9aac2c4f48015c1070e7c.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/button hover.ogg"
+dest_files=["res://.godot/imported/button hover.ogg-5596628d72a9aac2c4f48015c1070e7c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

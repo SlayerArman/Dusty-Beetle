@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://bpuxrwodbi22y"]
+
+[ext_resource type="Script" uid="uid://ctneirn0dt8hn" path="res://scripts/level_select.gd" id="1_3shnc"]
+[ext_resource type="AudioStream" uid="uid://chyosi1wff3je" path="res://sfx/button hover.ogg" id="2_chg43"]
+[ext_resource type="Texture2D" uid="uid://gu5ksb7mrvmi" path="res://assets/close button.png" id="2_p0wlc"]
+[ext_resource type="Script" uid="uid://c0ggokjodsfa" path="res://scenes/grid_container.gd" id="2_r77uv"]
+[ext_resource type="Texture2D" uid="uid://cjl8uqmavauxu" path="res://assets/Ground.png" id="3_2epne"]
+[ext_resource type="Texture2D" uid="uid://cs4gs0fwbp4mo" path="res://assets/old page.png" id="4_rif6e"]
+
+[node name="LevelSelect" type="Control" unique_id=409151103]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3shnc")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=941101812]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -497.0
+offset_top = -216.99998
+offset_right = -61.929565
+offset_bottom = 0.20446777
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.2594044, 2.0994043)
+columns = 5
+script = ExtResource("2_r77uv")
+
+[node name="level1" type="Button" parent="GridContainer" unique_id=1564589526]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Level 1"
+
+[node name="level2" type="Button" parent="GridContainer" unique_id=1565146567]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+disabled = true
+text = "Level 2"
+
+[node name="level3" type="Button" parent="GridContainer" unique_id=37811930]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+disabled = true
+text = "Level 3"
+
+[node name="level4" type="Button" parent="GridContainer" unique_id=1489421894]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+disabled = true
+text = "Level 4"
+
+[node name="level5" type="Button" parent="GridContainer" unique_id=1405487379]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+disabled = true
+text = "Level 5"
+
+[node name="level6" type="Button" parent="GridContainer" unique_id=1607349724]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+disabled = true
+text = "Level 6"
+
+[node name="level7" type="Button" parent="GridContainer" unique_id=2077172368]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 7"
+
+[node name="level8" type="Button" parent="GridContainer" unique_id=664282486]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 8"
+
+[node name="level9" type="Button" parent="GridContainer" unique_id=486521585]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 9"
+
+[node name="level10" type="Button" parent="GridContainer" unique_id=1769652894]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 10"
+
+[node name="level11" type="Button" parent="GridContainer" unique_id=374406554]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 10"
+
+[node name="level12" type="Button" parent="GridContainer" unique_id=1098997316]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 12"
+
+[node name="level13" type="Button" parent="GridContainer" unique_id=557889850]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 13"
+
+[node name="level14" type="Button" parent="GridContainer" unique_id=254263833]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 14"
+
+[node name="level15" type="Button" parent="GridContainer" unique_id=1539405938]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 16"
+
+[node name="level16" type="Button" parent="GridContainer" unique_id=335175980]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 17"
+
+[node name="level17" type="Button" parent="GridContainer" unique_id=921940125]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 18"
+
+[node name="level18" type="Button" parent="GridContainer" unique_id=1278465668]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 19"
+
+[node name="level19" type="Button" parent="GridContainer" unique_id=911683328]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.9607843, 0, 0.18039216, 1)
+disabled = true
+text = "Level 20"
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="GridContainer" unique_id=467175918]
+position = Vector2(-1025, -378)
+stream = ExtResource("2_chg43")
+volume_db = 15.0
+
+[node name="Exit" type="Button" parent="." unique_id=798883126]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 14.999996
+offset_right = 546.0
+offset_bottom = 535.0
+scale = Vector2(0.07999922, 0.07999922)
+icon = ExtResource("2_p0wlc")
+flat = true
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1736932023]
+modulate = Color(0.5866749, 0.5866749, 0.5866748, 1)
+z_index = -10
+position = Vector2(638.5, 362.5)
+scale = Vector2(0.465, 0.479)
+texture = ExtResource("3_2epne")
+
+[node name="Page" type="Sprite2D" parent="." unique_id=1857188385]
+modulate = Color(0.5866749, 0.5866749, 0.5866748, 1)
+z_index = -5
+position = Vector2(636.00006, 368.75003)
+scale = Vector2(1.4197801, 1.4301181)
+texture = ExtResource("4_rif6e")

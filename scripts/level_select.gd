@@ -2,12 +2,15 @@ extends Control
 
 @onready var exit_btn = $Exit
 @onready var grid_container = $GridContainer
+@onready var hover_sound = $HoverSound
 
 func _ready() -> void:
 	get_tree().paused = false
-	
-	if exit_btn and not exit_btn.pressed.is_connected(_on_exit_pressed):
-		exit_btn.pressed.connect(_on_exit_pressed)
+	if exit_btn:
+		if not exit_btn.pressed.is_connected(_on_exit_pressed):
+			exit_btn.pressed.connect(_on_exit_pressed)
+		if not exit_btn.mouse_entered.is_connected(_on_button_hovered.bind(exit_btn)):
+			exit_btn.mouse_entered.connect(_on_button_hovered.bind(exit_btn))
 		
 	update_level_buttons()
 
@@ -26,12 +29,14 @@ func update_level_buttons() -> void:
 		if not btn.pressed.is_connected(_on_level_pressed.bind(scene_path)):
 			btn.pressed.connect(_on_level_pressed.bind(scene_path))
 			
+		if not btn.mouse_entered.is_connected(_on_button_hovered.bind(btn)):
+			btn.mouse_entered.connect(_on_button_hovered.bind(btn))
+			
 		if level_num <= Global.highest_unlocked_level:
 			btn.disabled = false
 		else:
 			btn.disabled = true
 			
-
 		if level_num in Global.completed_levels:
 			btn.modulate = Color(1, 0.85, 0)
 		else:
@@ -45,3 +50,11 @@ func _on_level_pressed(scene_path: String) -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_button_hovered(btn: Button) -> void:
+	if btn and btn.disabled:
+		return
+		
+	if hover_sound and hover_sound.stream:
+		hover_sound.stop()
+		hover_sound.play()
