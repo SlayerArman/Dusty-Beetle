@@ -9,7 +9,7 @@ There are 20 campaign levels to complete, each with a timer. Beat a level to unl
 If you just want to see how long you can last, there's also an endless mode.
 The longer you survive, the faster things get. Your beetle gets faster as well, so at least you've got a survival chance.
 
-## Playable Link:
+## Playable Link
 https://slayerarman.itch.io/dusty-beetle
 
 ## Controls
@@ -24,3 +24,6 @@ https://slayerarman.itch.io/dusty-beetle
 
 ## A Little About the Project
 Dusty Beetle started with a pretty silly idea, and honestly, that's part of the fun. It's a small arcade game about a tiny beetle having the worst day imaginable.
+
+## AI Usage Declaration
+I used AI for minor bug fixes and for generating sprites for the game.
