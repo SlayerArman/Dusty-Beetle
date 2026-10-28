@@ -4,9 +4,17 @@ const SAVE_PATH = "user://save_data.cfg"
 
 var highest_unlocked_level: int = 1
 var completed_levels: Array[int] = []
+var high_score: float = 0.0
 
 func _ready() -> void:
 	load_game()
+
+func update_high_score(new_score: float) -> bool:
+	if new_score > high_score:
+		high_score = new_score
+		save_game()
+		return true
+	return false
 
 func complete_level(level_number: int) -> void:
 	if not level_number in completed_levels:
@@ -21,6 +29,7 @@ func save_game() -> void:
 	var config = ConfigFile.new()
 	config.set_value("progress", "highest_unlocked_level", highest_unlocked_level)
 	config.set_value("progress", "completed_levels", completed_levels)
+	config.set_value("progress", "high_score", high_score)
 	
 	var err = config.save(SAVE_PATH)
 	if err != OK:
@@ -34,6 +43,7 @@ func load_game() -> void:
 		return
 		
 	highest_unlocked_level = config.get_value("progress", "highest_unlocked_level", 1)
+	high_score = config.get_value("progress", "high_score", 0.0)
 	
 	var loaded_levels = config.get_value("progress", "completed_levels", [])
 	completed_levels.clear()

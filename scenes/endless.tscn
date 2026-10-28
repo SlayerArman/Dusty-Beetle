@@ -60,6 +60,22 @@ text = "0.0"
 label_settings = SubResource("LabelSettings_7mycd")
 horizontal_alignment = 1
 
+[node name="Highscore" type="Label" parent="CanvasLayer" unique_id=1052933466]
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 487.0
+offset_top = 24.0
+offset_right = 527.0
+offset_bottom = 63.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "0.0"
+label_settings = SubResource("LabelSettings_7mycd")
+horizontal_alignment = 1
+
 [node name="Squished" type="Sprite2D" parent="CanvasLayer" unique_id=1835684718]
 visible = false
 z_index = 2
@@ -113,6 +129,12 @@ shape = SubResource("RectangleShape2D_1vivr")
 [node name="Board" type="Sprite2D" parent="." unique_id=221242877]
 z_index = 5
 position = Vector2(135, 36)
+scale = Vector2(0.3247556, 0.32317102)
+texture = ExtResource("7_4mqhn")
+
+[node name="Board2" type="Sprite2D" parent="." unique_id=168115530]
+z_index = 5
+position = Vector2(1141, 38.000004)
 scale = Vector2(0.3247556, 0.32317102)
 texture = ExtResource("7_4mqhn")
 
